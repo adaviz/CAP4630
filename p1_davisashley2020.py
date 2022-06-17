@@ -2,7 +2,7 @@ from easyAI import TwoPlayerGame, Human_Player, AI_Player, Negamax
 from easyAI import solve_with_iterative_deepening
 import numpy as np
 
-#Black Square
+
 even = [0,2,4,6]
 odd = [1,3,5,7]
 
