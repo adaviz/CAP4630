@@ -177,8 +177,8 @@ class Checker(TwoPlayerGame):
 
     def make_move(self, pos):
         
-        self.players[self.current_player -1].pos = self.get_piece_pos_from_table(pos)
-        self.board[int(pos)+1] = self.current_player
+        self.players[self.current_player-1].pos = self.get_piece_pos_from_table(pos)
+        #self.board[int(pos)+1] = self.player[pos]
 
         """
         assign pieces index of pos array to current player position.
@@ -200,13 +200,15 @@ class Checker(TwoPlayerGame):
 
     def lose(self):
             if self.current_player-1 == 1:
-                if "W" in (0,1) or (0,3) or (0,5) or (0,7):
-                    print("White wins")
-                    return True
-            if self.current_player-1 == 0:
-                if "B" in (7,0) or (7,2) or (7,4) or (7,6):
+                if 'B' in [7,0] or [7,2] or [7,4] or [7,6]:
                     print("Black wins")
                     return True
+            if self.current_player-1 == 0:
+                if 'W' in [0,1] or [0,3] or [0,5] or [0,7]:
+                    print("White wins")
+                    return True
+            else:
+                return False
         
     """
 
@@ -240,9 +242,8 @@ class Checker(TwoPlayerGame):
 
     def scoring(self):
 
-       return -100 if self.lose() else 0
-       
-       """
+        return -100 if self.lose() else 0
+    """
        win = 0
        lose = -100
        """
