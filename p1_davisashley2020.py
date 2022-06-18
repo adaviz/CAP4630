@@ -192,11 +192,11 @@ class Checker(TwoPlayerGame):
 
     def lose(self):
         #If a white piece reaches the opponents side, they win
-        if self.players[0].pos:
+        if self.players[0]:
             if 'W' in [0,1] or [0,3] or [0,5] or [0,7]:
                 return True
         #If a black piece reaches the opponents side, they win
-        if self.players[1].pos:
+        if self.players[1]:
             if 'B' in [7,0] or [7,2] or [7,4] or [7,6]:
                 return True
 
