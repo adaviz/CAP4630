@@ -1,17 +1,8 @@
-"""
-Project 1 Implementing a game of checkers using easy AI 
-Chelsea Morgan, Achelin Felix, Ashley Davis
-Professor Oge Marquise
-
-"""
-
-
-
 from easyAI import TwoPlayerGame, Human_Player, AI_Player, Negamax
 from easyAI import solve_with_iterative_deepening
 import numpy as np
 
-
+#Black Square
 even = [0,2,4,6]
 odd = [1,3,5,7]
 
@@ -177,9 +168,9 @@ class Checker(TwoPlayerGame):
 
     def make_move(self, pos):
         
-        self.players[self.current_player-1].pos = self.get_piece_pos_from_table(pos)
-        #self.board[int(pos)+1] = self.player[pos]
-
+        self.players[self.current_player -1].pos = self.get_piece_pos_from_table(pos)
+        self.board[int(pos)+1] = self.players
+        
         """
         assign pieces index of pos array to current player position.
         parameters
@@ -197,33 +188,38 @@ class Checker(TwoPlayerGame):
         ------
 
         """
+        pass
 
     def lose(self):
-            if self.current_player-1 == 1:
-                if 'B' in [7,0] or [7,2] or [7,4] or [7,6]:
-                    print("Black wins")
-                    return True
-            if self.current_player-1 == 0:
-                if 'W' in [0,1] or [0,3] or [0,5] or [0,7]:
-                    print("White wins")
-                    return True
-            else:
-                return False
+        #If a white piece reaches the opponents side, they win
+        if self.players[0].pos:
+            if 'W' in [0,1] or [0,3] or [0,5] or [0,7]:
+                return True
+        #If a black piece reaches the opponents side, they win
+        if self.players[1].pos:
+            if 'B' in [7,0] or [7,2] or [7,4] or [7,6]:
+                return True
+
+
         
-    """
+        """
 
         black lose if white piece is in black territory
         white lose if black piece is in black territory
         """
+        pass
 
     def is_over(self):
         
-        return self.lose()
-
+        #the lose function will read true if a player has won and display the winner
+        if self.lose() == True:
+            print("Player %d wins." % (self.current_player))
+            return self.scoring()
 
         """
         game is over immediately when one player get one of its piece into opponent's territory.
         """
+        
 
     def show(self):
         """
@@ -242,8 +238,10 @@ class Checker(TwoPlayerGame):
 
     def scoring(self):
 
-        return -100 if self.lose() else 0
-    """
+       #if
+       return 100 if self.lose() else 0
+       
+       """
        win = 0
        lose = -100
        """
