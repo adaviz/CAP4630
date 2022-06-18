@@ -1,3 +1,12 @@
+"""
+Project 1 Implementing a game of checkers using easy AI 
+Chelsea Morgan, Achelin Felix, Ashley Davis
+Professor Oge Marquise
+
+"""
+
+
+
 from easyAI import TwoPlayerGame, Human_Player, AI_Player, Negamax
 from easyAI import solve_with_iterative_deepening
 import numpy as np
