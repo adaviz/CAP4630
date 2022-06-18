@@ -169,7 +169,7 @@ class Checker(TwoPlayerGame):
     def make_move(self, pos):
         
         self.players[self.current_player -1].pos = self.get_piece_pos_from_table(pos)
-        #self.board[int(pos)+1] = self.current_player
+        self.board[int(pos)+1] = self.current_player
 
         """
         assign pieces index of pos array to current player position.
@@ -190,19 +190,16 @@ class Checker(TwoPlayerGame):
         """
 
     def lose(self):
-
-        if self.current_player-1 == 0:
-            if "W" in [(0,1), (0,3), (0,5), (0,7)]:
-                return True
-        elif self.current_player-1 == 1:
-            if "B" in [(7,0), (7,2), (7,4), (7,6)]:
-                return True
-        else:
-            return False
+            if self.current_player-1 == 1:
+                if "W" in (0,1) or (0,3) or (0,5) or (0,7):
+                    print("White wins")
+                    return True
+            if self.current_player-1 == 0:
+                if "B" in (7,0) or (7,2) or (7,4) or (7,6):
+                    print("Black wins")
+                    return True
         
-
-        
-        """
+    """
 
         black lose if white piece is in black territory
         white lose if black piece is in black territory
@@ -211,6 +208,7 @@ class Checker(TwoPlayerGame):
     def is_over(self):
         
         return self.lose()
+
 
         """
         game is over immediately when one player get one of its piece into opponent's territory.
